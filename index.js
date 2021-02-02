@@ -11,26 +11,24 @@ const api = new WooCommerceRestApi({
     version: process.env.version
 });
 
+const productID = process.env.productID
 
 let stockObject = {};
-let stock = 0;
 
-
-// List products
-api.get("products/27686", {
+// Fetch Product
+api.get(`products/${productID}`, {
     per_page: 1, // 20 products per page
 })
     .then((response) => {
+
+
+        // Build Object
+
+        stockObject["stock_left"] = response.data.stock_quantity;
+        stockObject["product_name"] = response.data.name;
+
         // Successful request
-        console.log("Product:", response.data.name);
-        console.log("Stock:", response.data.stock_quantity);
-
-        // Set Objects
-        stock = response.data.stock_quantity;
-        productName = response.data.name;
-
-        stockObject["stock_left"] = stock;
-        stockObject["product_name"] = productName;
+        console.log("Product:", stockObject.product_name, "| Stock:", stockObject.stock_left);
 
     })
 
