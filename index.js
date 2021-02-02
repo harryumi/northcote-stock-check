@@ -14,6 +14,8 @@ const api = new WooCommerceRestApi({
 const productID = process.env.productID
 
 let stockObject = {};
+let stock = {};
+
 
 // Fetch Product
 api.get(`products/${productID}`, {
@@ -25,6 +27,7 @@ api.get(`products/${productID}`, {
         // Build Object
 
         stockObject["stock_left"] = response.data.stock_quantity;
+        stock = response.data.stock_quantity;
         stockObject["product_name"] = response.data.name;
 
         // Successful request
@@ -46,7 +49,7 @@ app.get('/', (req, res) => {
     res.send("Silence is Golden");
 })
 app.get('/stock', (req, res) => {
-    res.send(JSON.stringify(stockObject));
+    res.send(`Stock Remaining: ${stock}`);
 })
 
 app.listen(port, () => {
