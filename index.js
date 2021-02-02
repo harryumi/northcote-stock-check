@@ -4,24 +4,17 @@ const app = express()
 const port = process.env.PORT || 3000
 const dotenv = require('dotenv').config();
 
-
-
-// const api = new WooCommerceRestApi({
-//     url: process.env.url,
-//     consumerKey: process.env.consumerKey,
-//     consumerSecret: process.env.consumerSecret,
-//     version: process.env.version
-// });
-
 const api = new WooCommerceRestApi({
-    url: "https://www.northcote.com",
-    consumerKey: "ck_b4ebe384c839d026d0a8e1be5cf78c15681e3089",
-    consumerSecret: "cs_3c318107f63054448c7e19bb1badafdc996804df",
-    version: "wc/v3"
+    url: process.env.url,
+    consumerKey: process.env.consumerKey,
+    consumerSecret: process.env.consumerSecret,
+    version: process.env.version
 });
 
 
+let stockObject = {};
 let stock = 0;
+
 
 // List products
 api.get("products/27686", {
@@ -29,12 +22,18 @@ api.get("products/27686", {
 })
     .then((response) => {
         // Successful request
-        // console.log("Response Status:", response.status);
-        // console.log("Response Headers:", response.headers);
         console.log("Product:", response.data.name);
         console.log("Stock:", response.data.stock_quantity);
+
+        // Set Objects
         stock = response.data.stock_quantity;
+        productName = response.data.name;
+
+        stockObject["stock_left"] = stock;
+        stockObject["product_name"] = productName;
+
     })
+
     .catch((error) => {
         // Invalid request, for 4xx and 5xx statuses
         console.log("Response Status:", error.response.status);
@@ -46,7 +45,10 @@ api.get("products/27686", {
     });
 
 app.get('/', (req, res) => {
-    res.send(JSON.stringify(stock));
+    res.send("Silence is Golden");
+})
+app.get('/stock', (req, res) => {
+    res.send(JSON.stringify(stockObject));
 })
 
 app.listen(port, () => {
