@@ -1,0 +1,26 @@
+{
+  "name": "northcote-stock-check",
+  "version": "1.0.0",
+  "description": "Stock checking system using woocommerce API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harryumi/northcote-stock-check.git"
+  },
+  "author": "Harry Fielder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harryumi/northcote-stock-check/issues"
+  },
+  "homepage": "https://github.com/harryumi/northcote-stock-check#readme",
+  "dependencies": {
+    "@woocommerce/woocommerce-rest-api": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
