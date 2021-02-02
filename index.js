@@ -6,11 +6,18 @@ const dotenv = require('dotenv').config();
 
 
 
+// const api = new WooCommerceRestApi({
+//     url: process.env.url,
+//     consumerKey: process.env.consumerKey,
+//     consumerSecret: process.env.consumerSecret,
+//     version: process.env.version
+// });
+
 const api = new WooCommerceRestApi({
-    url: process.env.url,
-    consumerKey: process.env.consumerKey,
-    consumerSecret: process.env.consumerSecret,
-    version: process.env.version
+    url: "https://www.northcote.com",
+    consumerKey: "ck_b4ebe384c839d026d0a8e1be5cf78c15681e3089",
+    consumerSecret: "cs_3c318107f63054448c7e19bb1badafdc996804df",
+    version: "wc/v3"
 });
 
 
