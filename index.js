@@ -22,8 +22,8 @@ api.get("products/27686", {
 })
     .then((response) => {
         // Successful request
-        console.log("Response Status:", response.status);
-        console.log("Response Headers:", response.headers);
+        // console.log("Response Status:", response.status);
+        // console.log("Response Headers:", response.headers);
         console.log("Product:", response.data.name);
         console.log("Stock:", response.data.stock_quantity);
         stock = response.data.stock_quantity;
