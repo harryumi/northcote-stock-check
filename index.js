@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
     res.send("Silence is Golden");
 })
 app.get('/stock', (req, res) => {
-    res.send(`Stock Remaining: ${stock}`);
+    res.send(`<p style="text-align:center">Stock Remaining: ${stock}</p>`);
 })
 
 app.listen(port, () => {
