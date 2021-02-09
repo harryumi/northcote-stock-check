@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/stock', (req, res) => {
-    res.send(`<p style="text-align:center">Stock Remaining: ${stock}</p>`);
+    res.send(`<p style="text-align:center">Estimated Stock Remaining: ${stock}</p>`);
 })
 
 app.listen(port, () => {
